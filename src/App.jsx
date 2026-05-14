@@ -54,8 +54,8 @@ function App() {
 
 
     const url = isLogin
-    ? "http://localhost:5000/login"
-    : "http://localhost:5000/signup"
+    ? "https://my-shopee-backend.onrender.com/login"
+    : "https://my-shopee-backend.onrender.com/signup"
 
     const bodyData = isLogin
     ? {email,password}
@@ -103,7 +103,7 @@ function App() {
 
 
      const res = await
-    fetch(`http://localhost:5000/products/${editId}`,{
+    fetch(`https://my-shopee-backend.onrender.com/products/${editId}`,{
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -142,7 +142,7 @@ function App() {
     const token = localStorage.getItem("token")
 
      const res = await
-    fetch("http://localhost:5000/products",{
+    fetch("https://my-shopee-backend.onrender.com/products",{
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -196,7 +196,7 @@ useEffect(() => {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await fetch("http://localhost:5000/orders", {
+      const res = await fetch("https://my-shopee-backend.onrender.com/orders", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -229,7 +229,7 @@ useEffect(() => {
   const [products,setProducts] = useState([])
   const [loading,setLoading] = useState(true)
   useEffect(()=>{
-    fetch("http://localhost:5000/products")
+    fetch("https://my-shopee-backend.onrender.com/products")
     .then((res)=>res.json())
     .then((data)=>{
     setProducts(data)
@@ -246,7 +246,7 @@ useEffect(() => {
       const token = localStorage.getItem("token")
 
       const res = await
-      fetch(`http://localhost:5000/products/${_id}`,{
+      fetch(`https://my-shopee-backend.onrender.com/products/${_id}`,{
         method: "DELETE",
         headers: {
       Authorization: `Bearer ${token}`,},
@@ -377,7 +377,7 @@ useEffect(() => {
           const token = localStorage.getItem("token")
           
            const res = await
-    fetch("http://localhost:5000/orders",{
+    fetch("https://my-shopee-backend.onrender.com/orders",{
     method: "POST",
     headers: {
       Authorization: `Bearer ${token}`,
