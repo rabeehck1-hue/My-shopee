@@ -32,11 +32,11 @@ function App() {
   const [darkMode,setDarkMode] = useState(false)
   const [wishlist,setWishlist] = useState (() => {
     const savedWishlist = localStorage.getItem("wishlist")
-    return savedWishlist ? JSON.parse("savedWishlist") : []
+    return savedWishlist ? JSON.parse(savedWishlist) : []
   })
 
    useEffect(() => {
-    localStorage.setItem("whishlist",JSON.stringify(wishlist))
+    localStorage.setItem("wishlist",JSON.stringify(wishlist))
   },[wishlist])
 
   const handleAuth = async (e) => {
@@ -228,14 +228,24 @@ useEffect(() => {
 
   const [products,setProducts] = useState([])
   const [loading,setLoading] = useState(true)
-  useEffect(()=>{
-    fetch("https://my-shopee-backend.onrender.com/products")
-    .then((res)=>res.json())
-    .then((data)=>{
-    setProducts(data)
-    setLoading(false)})
-    .catch((err) =>console.log("ERROR:",(err)))
-  },[])
+ useEffect(() => {
+  fetch("https://my-shopee-backend.onrender.com/products")
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("PRODUCT DATA:", data);
+
+      setProducts(Array.isArray(data) ? data : []);
+
+      setLoading(false);
+    })
+    .catch((err) => {
+      console.log("ERROR:", err);
+
+      setProducts([]);
+
+      setLoading(false);
+    });
+}, []);
 
   const deleteProduct = async (_id) => {
       const confirmDelete = window.confirm("are you sure you want to delete this product")
