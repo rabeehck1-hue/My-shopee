@@ -232,7 +232,7 @@ useEffect(() => {
   fetch("https://my-shopee-backend.onrender.com/products")
     .then((res) => res.json())
     .then((data) => {
-      console.log("PRODUCT DATA:", data);
+      //console.log("PRODUCT DATA:", data);
 
       setProducts(Array.isArray(data) ? data : []);
 
