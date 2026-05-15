@@ -687,7 +687,7 @@ useEffect(() => {
 
     <h4 className='title'>Wishlist</h4>
     {wishlist.length === 0 ?(
-      <p>No wishlist added</p>
+      <p className='empty-text'>No wishlist added</p>
     ) : (
       <div className='product-container'>
         {wishlist.map((item) => (
